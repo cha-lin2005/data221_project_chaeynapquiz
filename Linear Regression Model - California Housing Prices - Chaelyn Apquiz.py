@@ -8,6 +8,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 california_house_prices = pd.read_csv("housing.csv")
 
+#PRE-PROCESSING
 # find the median and fill in the missing values
 california_house_prices["total_bedrooms"] = (california_house_prices["total_bedrooms"].fillna(california_house_prices["total_bedrooms"].median()))
 
@@ -29,6 +30,8 @@ features_train, features_test, prices_train, prices_test = train_test_split(feat
 
 # scaling the values
 scaled_values = StandardScaler()
+features_train_scaled = scaled_values.fit_transform(features_train)
+features_train_scaled = scaled_values.transform(features_test)
 
 
 #git push -u origin main
